@@ -1,3 +1,5 @@
+import 'package:dummy_api/screen/cart/cart_binding.dart';
+import 'package:dummy_api/screen/cart/cart_page.dart';
 import 'package:dummy_api/screen/home/home_binding.dart';
 import 'package:dummy_api/screen/home/home_page.dart';
 import 'package:dummy_api/screen/login/login_binding.dart';
@@ -16,6 +18,11 @@ class AppPages {
       name: AppRoutes.home,
       page: () => const HomePage(),
       binding: HomeBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.cart,
+      page: () => const CartPage(),
+      binding: CartBinding(),
     ),
   ];
 }

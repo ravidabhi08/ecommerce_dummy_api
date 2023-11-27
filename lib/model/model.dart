@@ -86,3 +86,96 @@ class Products {
     return data;
   }
 }
+
+class Cart {
+  int? id;
+  List<Products>? products;
+  int? total;
+  int? discountedTotal;
+  int? userId;
+  int? totalProducts;
+  int? totalQuantity;
+
+  Cart(
+      {this.id,
+      this.products,
+      this.total,
+      this.discountedTotal,
+      this.userId,
+      this.totalProducts,
+      this.totalQuantity});
+
+  Cart.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    if (json['products'] != null) {
+      products = <Products>[];
+      json['products'].forEach((v) {
+        products!.add(new Products.fromJson(v));
+      });
+    }
+    total = json['total'];
+    discountedTotal = json['discountedTotal'];
+    userId = json['userId'];
+    totalProducts = json['totalProducts'];
+    totalQuantity = json['totalQuantity'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    if (this.products != null) {
+      data['products'] = this.products!.map((v) => v.toJson()).toList();
+    }
+    data['total'] = this.total;
+    data['discountedTotal'] = this.discountedTotal;
+    data['userId'] = this.userId;
+    data['totalProducts'] = this.totalProducts;
+    data['totalQuantity'] = this.totalQuantity;
+    return data;
+  }
+}
+
+class Product {
+  int? id;
+  String? title;
+  int? price;
+  int? quantity;
+  int? total;
+  dynamic discountPercentage;
+  int? discountedPrice;
+  String? thumbnail;
+
+  Product(
+      {this.id,
+      this.title,
+      this.price,
+      this.quantity,
+      this.total,
+      this.discountPercentage,
+      this.discountedPrice,
+      this.thumbnail});
+
+  Product.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    title = json['title'];
+    price = json['price'];
+    quantity = json['quantity'];
+    total = json['total'];
+    discountPercentage = json['discountPercentage'];
+    discountedPrice = json['discountedPrice'];
+    thumbnail = json['thumbnail'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['title'] = this.title;
+    data['price'] = this.price;
+    data['quantity'] = this.quantity;
+    data['total'] = this.total;
+    data['discountPercentage'] = this.discountPercentage;
+    data['discountedPrice'] = this.discountedPrice;
+    data['thumbnail'] = this.thumbnail;
+    return data;
+  }
+}

@@ -18,11 +18,6 @@ Future<List<Products>> fetchItemHomeData() async {
 
 Future<List<Products>> fetchItemData({required String category}) async {
   // Replace this URL with your API endpoint
-  if (category == "home") {
-    fetchItemHomeData();
-  } else {
-    fetchItemData(category: category);
-  }
   final response = await http
       .get(Uri.parse('https://dummyjson.com/products/category/$category'));
   if (response.statusCode == 200) {
@@ -48,5 +43,27 @@ Future<Products> fetchItemId({required int id}) async {
   } else {
     // If that call was not successful, throw an error.
     throw Exception('Failed to load data');
+  }
+}
+
+Future<List<Product>> fetchCart() async {
+  // Replace this URL with your API endpoint
+  final response = await http.get(Uri.parse('https://dummyjson.com/carts/15'));
+  if (response.statusCode == 200) {
+    // If the call to the server was successful, parse the JSON
+    final data = json.decode(response.body);
+    final products = data["products"] as List<dynamic>;
+    return products.map((json) => Product.fromJson(json)).toList();
+  } else {
+    // If that call was not successful, throw an error.
+    throw Exception('Failed to load data');
+  }
+}
+
+Future<List<Products>> fetchItem({required String category}) {
+  if (category == "home") {
+    return fetchItemHomeData();
+  } else {
+    return fetchItemData(category: category);
   }
 }

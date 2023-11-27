@@ -1,5 +1,6 @@
 import 'package:dummy_api/screen/item/item_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatelessWidget {
@@ -21,7 +22,7 @@ class MainHome extends StatefulWidget {
 class _MainHomeState extends State<MainHome> {
   /// List of Tab Bar Item
   List<String> category = [
-    "Home",
+    "home",
     "smartphones",
     "laptops",
     "fragrances",
@@ -65,7 +66,9 @@ class _MainHomeState extends State<MainHome> {
           ),
           actions: [
             IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.toNamed('/cart');
+                },
                 icon: const Icon(Icons.shopping_cart_outlined))
           ],
         ),
@@ -147,7 +150,7 @@ class _MainHomeState extends State<MainHome> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            ItemPage(category: '${category[pageIndex]}'),
+                            ItemPage(category: category[pageIndex]),
                           ],
                         ),
                       );

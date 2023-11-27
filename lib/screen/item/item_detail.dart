@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dummy_api/api_service/http_service.dart';
 import 'package:dummy_api/model/model.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ItemsDetail extends StatelessWidget {
@@ -150,8 +151,7 @@ class ItemsDetail extends StatelessWidget {
                       height: 5,
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 8.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: Text(
                         product.title!,
                         style: GoogleFonts.roboto(
@@ -192,6 +192,7 @@ class ItemsDetail extends StatelessWidget {
         floatingActionButton: FloatingActionButton.extended(
           onPressed: () {
             // Add your onPressed code here!
+            Get.toNamed('/cart');
           },
           backgroundColor: Colors.brown,
           label: const Text('Add to Cart'),

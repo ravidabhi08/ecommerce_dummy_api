@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dummy_api/api_service/http_service.dart';
 import 'package:dummy_api/model/model.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'item_detail.dart';
 
@@ -15,7 +16,7 @@ class ItemPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<Products>>(
-      future: fetchItemData(category: category),
+      future: fetchItem(category: category),
       builder: (BuildContext context, AsyncSnapshot<List<Products>> snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return SizedBox(
@@ -96,7 +97,9 @@ class ItemPage extends StatelessWidget {
                               PopupMenuItem(
                                   child: IconButton(
                                 icon: const Icon(Icons.add_card_sharp),
-                                onPressed: () {},
+                                onPressed: () {
+                                  Get.toNamed('/cart');
+                                },
                               ))
                             ],
                           ),
