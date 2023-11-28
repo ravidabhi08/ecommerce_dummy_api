@@ -48,11 +48,12 @@ Future<Products> fetchItemId({required int id}) async {
 
 Future<List<Product>> fetchCart() async {
   // Replace this URL with your API endpoint
-  final response = await http.get(Uri.parse('https://dummyjson.com/carts/15'));
+  final response = await http.get(Uri.parse('https://dummyjson.com/carts/1'));
   if (response.statusCode == 200) {
     // If the call to the server was successful, parse the JSON
     final data = json.decode(response.body);
     final products = data["products"] as List<dynamic>;
+    final total = data["total"];
     return products.map((json) => Product.fromJson(json)).toList();
   } else {
     // If that call was not successful, throw an error.
